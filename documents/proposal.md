@@ -1,72 +1,73 @@
-**Final Project Proposal: Enhancing Quantitative Trading Strategies Using Transformer-Based Models**  
-*(Google Docs Format)*  
+## **Final Project Proposal: Transformer-Based Models for Enhancing Quantitative Trading Strategies**  
+
+#### **Team Members**: Chong Chen, Di Liu
 
 ---
 
 ### **1. Subject**  
-We aim to explore the application of transformer-based models in quantitative trading by replicating and extending the **Quantformer** architecture from the paper. Our focus is to adapt this model to predict stock returns using numerical financial data, with validation on the **U.S. stock market** (e.g., S&P 500 constituents) to assess its generalizability across markets.  
+
+In this project, we will explore the application of transformer-based models in quantitative trading. Traditional financial models, such as moving averages and factor-based approaches, have limitations in capturing complex, time series information of the market. Meanwhile, deep learning techniques like LSTMs and GRUs have shown promise but struggle with long-term dependencies and scalability.
+
+Our goal is to develop a **transformer-based architecture** tailored for financial time series prediction, leveraging **self-attention mechanisms** to extract meaningful patterns from historical stock data. The model will be trained to predict future stock returns based on historical price movements and trading volume data. To validate its effectiveness, we will test it on the **U.S. stock market** (e.g., S&P 500, NASDAQ) and compare its performance with traditional models.
 
 ---
 
 ### **2. Data Collection**  
+
 #### **Datasets**  
 - **Historical Stock Data**  
-  - **Scope**: Daily, weekly, and monthly adjusted closing prices, turnover rates, and trading volumes for U.S. stocks (e.g., S&P 500) from 2010–2023.  
-  - **Sources**: Yahoo Finance, Alpha Vantage, or QuantConnect.  
+  - **Scope**: Daily, weekly, and monthly adjusted closing prices, turnover rates, and trading volumes for U.S. stocks (e.g., S&P 500, NASDAQ).  
+  - **Sources**: Yahoo Finance, Alpha Vantage, or Kaggle.  
 - **Benchmark Data**  
-  - S&P 500 index data for calculating excess returns and risk-adjusted metrics.  
+  - S&P 500 index data to compute excess returns and risk-adjusted metrics.  
 
 #### **Preprocessing**  
-- Handle missing values (e.g., delisted or suspended stocks).  
+- Handle missing values, including delisted or suspended stocks.  
 - Normalize features using zero-mean, unit-variance normalization.  
-- Segment data into training (2010–2019) and testing (2020–2023) periods.  
+- Segment data into training (e.g., 2010–2020) and testing (e.g., 2021–2024) periods for robust evaluation.  
 
 ---
 
 ### **3. Methods**  
+
 #### **Model Architecture**  
-- Implement **Quantformer** using PyTorch:  
-  - Replace word embeddings with linear layers.  
-  - Simplify the decoder for regression/classification tasks.  
-  - Train with multi-head self-attention, MSE loss, and Adam optimizer.  
+To leverage the advantages of transformers in sequence modeling, we propose a **custom transformer-based architecture** for financial time series forecasting:
+- Apply **multi-head self-attention** to capture relationships across different stocks and time horizons.  
+- Modify the **decoder** for direct regression and classification of stock returns.  
+- Train using **MSE loss** and optimize with **Adam** to enhance convergence.  
 
 #### **Baselines for Comparison**  
-- Traditional models: LSTM, GRU.  
-- Classical quantitative factors: Momentum, moving averages.  
+- **Traditional Machine Learning Models**: LSTM, GRU.  
+- **Classical Quantitative Strategies**: Momentum, moving averages, mean reversion models.  
 
 #### **Experiments**  
-- Test performance across data frequencies (daily, weekly, monthly).  
-- Evaluate scalability by varying quantiles (e.g., top 1%, 5%, 10% of stocks).  
+- Test performance across different data frequencies (daily, weekly, monthly).  
+- Analyze model scalability by varying stock selection criteria (e.g., top 1%, 5%, 10% of stocks by market cap).  
 
-#### **Backtesting**  
-- Simulate trading strategies using model predictions (buy/hold/sell signals).  
-- Evaluate using risk-adjusted metrics:  
-  - **Sharpe Ratio**, **Alpha**, **VaR**, **Maximum Drawdown**.  
+#### **Backtesting Framework**  
+To assess real-world applicability, we will simulate trading strategies using model-generated signals. Evaluation metrics include:  
+- **Sharpe Ratio** (risk-adjusted return measure).  
+- **Alpha** (excess return relative to the market benchmark).  
+- **Value at Risk (VaR)** (downside risk assessment).  
+- **Maximum Drawdown** (worst-case loss scenario).  
 
 ---
 
 ### **4. Goals**  
+
 #### **Primary Objectives**  
-- Replicate the Quantformer model and validate its predictive accuracy on U.S. market data.  
-- Achieve superior risk-adjusted returns (Sharpe Ratio > 1.0, positive Alpha) compared to benchmarks like the S&P 500.  
+- Develop and validate a **transformer-based model** for predicting stock returns.  
+- Demonstrate superior risk-adjusted returns (**Sharpe Ratio > 1.0, positive Alpha**) compared to traditional approaches.  
 
 #### **Secondary Objectives**  
-- Investigate the impact of training frequency (daily vs. monthly) and dataset scale on performance.  
-- Publish open-source code and results on GitHub for reproducibility.  
+- Investigate the impact of different training frequencies (daily vs. monthly) and dataset scales on predictive performance.  
+- Open-source our model, code, and results for transparency and reproducibility.  
 
 #### **Stretch Goal**  
-- Integrate additional data sources (e.g., news sentiment, macroeconomic indicators) to enhance predictions.  
+- Enhance the model by integrating alternative data sources (e.g., news sentiment, macroeconomic indicators) to improve predictive accuracy.  
 
 ---
 
 ### **5. Expected Outcome**  
-- A robust transformer-based trading strategy demonstrating Quantformer’s viability in diverse markets.  
-- Open-source code, detailed performance analysis, and a comparative study against traditional models/factors.  
-
---- 
-
-**Team Members**: [Your Names]  
-**Submission Date**: [Insert Date]  
-
----  
-*Formatting Note: This proposal uses standard Google Docs styling with headings, bullet points, and clear section breaks. Adjust fonts (e.g., Arial/Calibri), spacing, and colors as needed.*
+- A novel transformer-based trading strategy that effectively captures complex market patterns.  
+- A comparative analysis of our model against traditional financial models and deep learning baselines.  
